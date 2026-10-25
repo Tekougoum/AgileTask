@@ -170,3 +170,15 @@ button {
   color: var(--vert-clair);
   background: rgba(35, 134, 54, 0.15);
 }
+
+
+
+
+
+
+
+
+/* ---------- Pages provisoires et lien actif ---------- */
+.page-vide { padding-block: 4rem; }
+.page-vide p { margin-top: 0.5rem; color: var(--doux); }
+.menu-liens a.active { color: var(--bleu); font-weight: 600; }

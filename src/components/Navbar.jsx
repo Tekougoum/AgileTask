@@ -1,21 +1,19 @@
+
+
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import Bouton from './Bouton'
-import './Navbar.css'
-const liens = [
-    { chemin: '/', libelle: 'Accueil' },
-    { chemin: '/#fonctionnalites', libelle: 'Fonctionnalités' },
-    { chemin: '/#fonctionnement', libelle: 'Fonctionnement' },
-]
 function Navbar() {
     const [ouvert, setOuvert] = useState(false)
     const fermer = () => setOuvert(false)
     return (
         <header className="header">
+
             <div className="conteneur header-barre">
-                <a href="/" className="logo">
-                    <span className="logo-icone">AT</span>
+                <Link to="/" onClick={fermer} className="logo">
+                    <span className="logo-icone">&lt;/&gt;</span>
                     AgileTask
-                </a>
+                </Link>
                 <button
                     className="burger"
                     aria-expanded={ouvert}
@@ -25,11 +23,15 @@ function Navbar() {
                 </button>
                 <nav className={`menu ${ouvert ? 'menu-ouvert' : ''}`}>
                     <div className="menu-liens">
-                        {liens.map((lien) => (
-                            <a key={lien.chemin} href={lien.chemin} onClick={fermer}>
-                                {lien.libelle}
-                            </a>
-                        ))}
+                        <NavLink to="/" end onClick={fermer}>
+                            Accueil
+                        </NavLink>
+                        <a href="/fonctionnalites" onClick={fermer}>
+                            Fonctionnalités
+                        </a>
+                        <a href="/fonctionnement" onClick={fermer}>
+                            Fonctionnement
+                        </a>
                     </div>
                     <div className="menu-actions">
                         <Bouton lien="/login" variante="secondaire" onClick={fermer}>

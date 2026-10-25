@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 function Bouton({ children, lien = '/', variante = 'principal', taille = 'md', onClick }) {
     return (
-        <a href={lien} onClick={onClick} className={`btn btn-${variante} btn-${taille}`}>
+        <Link to={lien} onClick={onClick} className={`btn btn-${variante} btn-${taille}`}>
             {children}
-        </a>
+        </Link>
     )
 }
 export default Bouton

@@ -1,42 +1,22 @@
-// function App() {
-//   const nom = 'AgileTask'
-//   return (
-//      <div className="conteneur">      
-//       <h1>{nom}</h1>      
-//       <p>Gestion de projets et de tickets pour développeurs.</p>    
-//      </div>)
-// }
 
-// export default App
 
-// import Bouton from './components/Bouton'
-// import Carte from './components/Carte'
-// function App() {
-//   return (
-//     <div className="conteneur">
-//       <h1>Test des composants</h1>
-//       <div style={{ display: 'flex', gap: '0.75rem', margin: '1.5rem 0' }}>
-//         <Bouton lien="/register">Créer un compte</Bouton>
-//         <Bouton lien="/login" variante="secondaire">Se connecter</Bouton>
-//         <Bouton taille="lg">Grand bouton</Bouton>
-//       </div>
-//       <Carte icone="</>" couleur="bleu" titre="Entraide" texte="Texte de test." />
-//     </div>
-//   )
-// }
-// export default App
-
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import PageVide from './pages/PageVide'
 function App() {
   return (
-    <>
-      <Navbar />
-      <main className="conteneur">
-        <p>Le contenu de la page viendra ici.</p>
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path='/login' element={<PageVide titre="Connexion" />} />
+        <Route path='/register' element={<PageVide titre="Inscription" />} />
+        <Route path="/fonctionnement" element={<PageVide titre="Fonctionnent" />} />
+        <Route path="/fonctionnalites" element={<PageVide titre="Fonctionnalites" />} />
+        <Route path="*" element={<PageVide titre="Page introuvable" />} />
+        
+      </Route>
+    </Routes>
   )
 }
 export default App
