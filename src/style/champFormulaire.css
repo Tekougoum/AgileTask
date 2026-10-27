@@ -1,0 +1,20 @@
+.champ { display: flex; flex-direction: column; gap: 0.4rem; }
+.champ-label { color: var(--doux); font-size: 0.8rem; font-weight: 700; }
+.champ-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  background: var(--fond);
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  color: var(--texte);
+  font: inherit;
+  font-size: 0.95rem;
+}
+.champ-input::placeholder { color: var(--commentaire); }
+.champ-input:focus {
+  outline: none;
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+}
+.champ-input-erreur { border-color: var(--rouge); }
+.champ-erreur { color: var(--rouge); font-size: 0.8rem; }

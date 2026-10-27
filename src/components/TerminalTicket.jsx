@@ -16,7 +16,7 @@ function TerminalTicket() {
           <span className="pastille pastille-jaune" />
           <span className="pastille pastille-verte" />
         </div>
-        <span className="terminal-titre">ticket DEV-001</span>
+        <span className="terminal-titre">ticket AT-001</span>
       </div>
       {/* Contenu */}
       <div className="terminal-corps">

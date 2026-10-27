@@ -1,4 +1,4 @@
-import './Navbar.css'
+import '../style/Navbar.css'
 function Footer() {
     return (
         <footer className="footer">

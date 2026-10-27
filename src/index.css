@@ -16,6 +16,14 @@
   --rayon: 12px;
   --largeur-max: 72rem;
   --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --fond-sombre: #0b0f14;
+  --vert-vif: #3fb950;
+  --gris-fonce: #21262d;
+  --commentaire: #6e7681;
+  --info-fond: #141f2e;
+  --info-bordure: #2e547f;
+  --erreur-fond: #24171c;
+  --erreur-bordure: #823130;
 }
 
 *,
@@ -120,6 +128,10 @@ button {
   background: var(--bordure);
 }
 
+.btn-bloc {
+  width: 100%;
+}
+
 /* ---------- Carte ---------- */
 .carte {
   background: var(--surface);
@@ -179,6 +191,16 @@ button {
 
 
 /* ---------- Pages provisoires et lien actif ---------- */
-.page-vide { padding-block: 4rem; }
-.page-vide p { margin-top: 0.5rem; color: var(--doux); }
-.menu-liens a.active { color: var(--bleu); font-weight: 600; }
+.page-vide {
+  padding-block: 4rem;
+}
+
+.page-vide p {
+  margin-top: 0.5rem;
+  color: var(--doux);
+}
+
+.menu-liens a.active {
+  color: var(--bleu);
+  font-weight: 600;
+}
