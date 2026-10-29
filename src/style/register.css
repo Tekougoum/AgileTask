@@ -1,0 +1,174 @@
+.terminal-code{
+    padding: 1.5rem;
+    color: var(--doux);
+    padding-top: 0;
+    font-family: monospace;
+}
+
+.terminal-pastilles{
+    padding: 1rem;
+}
+
+
+
+.auth {
+    display: grid;
+    /* grid-template-columns: minmax(0, 1fr); */
+    min-height: calc(100vh - 4rem);
+}
+
+.auth-gauche {
+    display: none;
+    padding: 6rem 4rem;
+    background: var(--fond-sombre);
+    border-right: 1px solid var(--bordure);
+}
+
+.auth-gauche h2 {
+    font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+}
+
+.auth-gauche h2 .accent {
+    display: block;
+}
+
+.auth-gauche>p {
+    max-width: 28rem;
+    margin-top: 0.5rem;
+    color: var(--doux);
+}
+
+.auth-droite {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem 3rem;
+}
+
+.auth-formulaire {
+    width: 100%;
+    max-width: 30rem;
+}
+
+.auth-formulaire h1 {
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+}
+
+.auth-sous-titre {
+    margin-bottom: 1.5rem;
+    color: var(--doux);
+    font-size: 0.9rem;
+}
+
+.auth-champs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.auth-lien {
+    margin-top: 1.25rem;
+    text-align: center;
+    color: var(--doux);
+    font-size: 0.9rem;
+}
+
+.auth-lien a:hover {
+    color: var(--texte);
+    text-decoration: underline;
+}
+
+/* ---------- Faux éditeur de code (panneau de gauche) ---------- */
+.bloc-code {
+    padding: 20px;
+    max-width: 32rem;
+    margin-top: 2.5rem;
+    padding: 1rem 1.5rem 1.5rem;
+    background: var(--terminal);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+}
+
+.bloc-code-corps {
+    margin-top: 1rem;
+}
+
+.code-ligne {
+    min-height: 1.9em;
+    line-height: 1.9;
+    white-space: pre;
+}
+
+.code-mot {
+    color: var(--violet);
+}
+
+.code-valeur {
+    color: var(--orange);
+}
+
+.code-texte {
+    color: var(--vert-vif);
+}
+
+.code-commentaire {
+    color: var(--commentaire);
+}
+
+/* ---------- Encarts (information, erreur, succès) ---------- */
+.encart {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.encart-info {
+    background: var(--info-fond);
+    border-color: var(--info-bordure);
+}
+
+.encart-info-icone {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1.5px solid var(--bleu);
+    border-radius: 50%;
+    color: var(--bleu);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.encart-erreur {
+    background: var(--erreur-fond);
+    border-color: var(--erreur-bordure);
+    color: var(--rouge);
+}
+
+.encart-succes {
+    background: rgba(35, 134, 54, 0.15);
+    border-color: var(--vert);
+    color: var(--vert-vif);
+}
+
+/* ---------- Écrans larges : deux colonnes ---------- */
+@media (min-width: 960px) {
+    .auth {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .auth-gauche {
+        display: block;
+    }
+
+    .auth-droite {
+        padding: 3.5rem 3rem;
+    }
+}

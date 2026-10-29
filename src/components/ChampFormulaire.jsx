@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import '../style/ChampFormulaire.css'
 function ChampFormulaire({ label, valeur, onChange, erreur, ...autres }) {
-    // Identifiant unique, pour relier le label à son champ
+    
     const id = useId()
     return (
         <div className="champ">
