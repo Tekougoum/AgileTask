@@ -13,7 +13,7 @@
 
 .auth {
     display: grid;
-    /* grid-template-columns: minmax(0, 1fr); */
+    grid-template-columns: minmax(0, 1fr);
     min-height: calc(100vh - 4rem);
 }
 

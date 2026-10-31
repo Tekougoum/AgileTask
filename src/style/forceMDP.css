@@ -1,0 +1,32 @@
+.groupe-mdp {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.force-barres {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.force-barre {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--gris-fonce);
+}
+
+.force-barre-active {
+    background: var(--vert-vif);
+}
+
+.force-niveau-1 .force-barre-active {
+    background: var(--rouge);
+}
+
+.force-texte {
+    margin-top: 0.4rem;
+    text-align: right;
+    color: var(--doux);
+    font-size: 0.75rem;
+}
