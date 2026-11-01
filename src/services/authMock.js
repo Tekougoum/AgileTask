@@ -10,7 +10,6 @@ function lireUtilisateurs() {
 function sauverUtilisateurs(utilisateurs) {
   localStorage.setItem(CLE_UTILISATEURS, JSON.stringify(utilisateurs))
 }
-// Ce que l'interface a le droit de voir : jamais le mot de passe
 function versPublic(u) {
   return {
     id: u.id,
@@ -44,7 +43,7 @@ export function connecter({ email, motDePasse, memoriser }) {
   const utilisateur = lireUtilisateurs().find(
     (u) => u.email === emailNormalise && u.motDePasse === motDePasse,
   )
-  // Même message si l'e-mail est inconnu OU si le mot de passe est faux
+  // meme message si l'e-mail est inconnu OU si le mot de passe est faux
   if (!utilisateur) {
     return { ok: false, erreur: 'Adresse e-mail ou mot de passe incorrect.' }
   }

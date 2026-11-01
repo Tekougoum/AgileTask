@@ -40,7 +40,7 @@ function Register() {
     <section className="auth">
       <div className="auth-gauche">
         <h2>
-          Rejoignez votre équipe <span className="accent">sur DevTicket.</span>
+          Rejoignez votre équipe sur <span className="accent">AgileTask.</span>
         </h2>
         <p>
           Consultez vos tickets, mettez à jour leur statut et échangez avec vos

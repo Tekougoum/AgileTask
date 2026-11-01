@@ -41,10 +41,34 @@
 // }
 // export default App
 
+// import { Routes, Route } from 'react-router-dom'
+// import Layout from './components/Layout'
+// import LayoutAuth from './components/LayoutAuth'
+// import Home from './pages/Home'
+// import PageVide from './pages/PageVide'
+// import Register from './pages/Register'
+// function App() {
+//   return (
+//     <Routes>
+//       <Route element={<Layout />}>
+//         <Route path="/" element={<Home />} />
+//         <Route path="*" element={<PageVide titre="Page introuvable" />} />
+//       </Route>
+//       <Route element={<LayoutAuth />}>
+//         <Route path="/login" element={<PageVide titre="Connexion" />} />
+//         <Route path="/register" element={<Register />} />
+//       </Route>
+//     </Routes>
+//   )
+// }
+// export default App
+
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import LayoutAuth from './components/LayoutAuth'
+import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
+import Login from './pages/Login'
 import PageVide from './pages/PageVide'
 import Register from './pages/Register'
 function App() {
@@ -52,10 +76,11 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<PageVide titre="Page introuvable" />} />
       </Route>
       <Route element={<LayoutAuth />}>
-        <Route path="/login" element={<PageVide titre="Connexion" />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>
     </Routes>
