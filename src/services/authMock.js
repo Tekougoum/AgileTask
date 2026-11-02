@@ -32,7 +32,7 @@ export function inscrire({ nom, email, motDePasse }) {
     email: emailNormalise,
     motDePasse,
     projets: [],
- invitations: [],
+    invitations: [],
     tickets: [],
   }
   sauverUtilisateurs([...utilisateurs, nouveau])
@@ -43,7 +43,7 @@ export function connecter({ email, motDePasse, memoriser }) {
   const utilisateur = lireUtilisateurs().find(
     (u) => u.email === emailNormalise && u.motDePasse === motDePasse,
   )
-  // meme message si l'e-mail est inconnu OU si le mot de passe est faux
+  
   if (!utilisateur) {
     return { ok: false, erreur: 'Adresse e-mail ou mot de passe incorrect.' }
   }

@@ -4,12 +4,12 @@ import Bouton from '../components/Bouton'
 import ChampFormulaire from '../components/ChampFormulaire'
 import ForceMotDePasse from '../components/ForceMotDePasse'
 import TerminalCompte from '../components/TerminalCompte'
+import useFormulaire from '../hooks/useFormulaire'
 import { inscrire } from '../services/authMock'
 import { validerInscription } from '../utils/validation'
-import '../style/register.css'
 function Register() {
   const navigate = useNavigate()
-  const [formulaire, setFormulaire] = useState({
+  const { valeurs, modifier: modifierValeur } = useFormulaire({
     nom: '',
     email: '',
     motDePasse: '',
@@ -17,17 +17,16 @@ function Register() {
   })
   const [erreurs, setErreurs] = useState({})
   const modifier = (e) => {
-    const { name, value } = e.target
-    setFormulaire({ ...formulaire, [name]: value })
+    modifierValeur(e)
     // L'utilisateur corrige ce champ : on efface son message d'erreur
-    setErreurs({ ...erreurs, [name]: undefined })
+    setErreurs((anciennes) => ({ ...anciennes, [e.target.name]: undefined }))
   }
   const soumettre = (e) => {
     e.preventDefault()
-    const nouvellesErreurs = validerInscription(formulaire)
+    const nouvellesErreurs = validerInscription(valeurs)
     setErreurs(nouvellesErreurs)
     if (Object.keys(nouvellesErreurs).length > 0) return
-    const resultat = inscrire(formulaire)
+    const resultat = inscrire(valeurs)
     if (!resultat.ok) {
       setErreurs({ email: resultat.erreur })
       return
@@ -38,9 +37,9 @@ function Register() {
   }
   return (
     <section className="auth">
-      <div className="auth-gauche">
+       <div className="auth-gauche">
         <h2>
-          Rejoignez votre équipe sur <span className="accent">AgileTask.</span>
+          Rejoignez votre équipe sur <span className="accent"> AgileTask.</span>
         </h2>
         <p>
           Consultez vos tickets, mettez à jour leur statut et échangez avec vos
@@ -52,7 +51,7 @@ function Register() {
         <div className="auth-formulaire">
           <h1>Créer un compte</h1>
           <p className="auth-sous-titre">
-            Renseignez vos informations pour accéder à DevTicket.
+            Renseignez vos informations pour accéder à AgileTask.
           </p>
           <form onSubmit={soumettre} noValidate>
             <div className="auth-champs">
@@ -61,7 +60,7 @@ function Register() {
                 name="nom"
                 placeholder="Ex. : Jean Dupont"
                 autoComplete="name"
-                valeur={formulaire.nom}
+                valeur={valeurs.nom}
                 onChange={modifier}
                 erreur={erreurs.nom}
               />
@@ -71,7 +70,7 @@ function Register() {
                 type="email"
                 placeholder="vous@exemple.com"
                 autoComplete="email"
-                valeur={formulaire.email}
+                valeur={valeurs.email}
                 onChange={modifier}
                 erreur={erreurs.email}
               />
@@ -81,12 +80,12 @@ function Register() {
                   name="motDePasse"
                   type="password"
                   placeholder="8 caractères minimum"
-                  autoComplete="new-password"
-                  valeur={formulaire.motDePasse}
+ autoComplete="new-password"
+                  valeur={valeurs.motDePasse}
                   onChange={modifier}
                   erreur={erreurs.motDePasse}
                 />
-                <ForceMotDePasse motDePasse={formulaire.motDePasse} />
+                <ForceMotDePasse motDePasse={valeurs.motDePasse} />
               </div>
               <ChampFormulaire
                 label="Confirmation du mot de passe"
@@ -94,7 +93,7 @@ function Register() {
                 type="password"
                 placeholder="Saisissez à nouveau le mot de passe"
                 autoComplete="new-password"
-                valeur={formulaire.confirmation}
+                valeur={valeurs.confirmation}
                 onChange={modifier}
                 erreur={erreurs.confirmation}
               />

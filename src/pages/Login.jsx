@@ -3,37 +3,38 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import Bouton from '../components/Bouton'
 import ChampFormulaire from '../components/ChampFormulaire'
 import TerminalConnexion from '../components/TerminalConnexion'
+import useFormulaire from '../hooks/useFormulaire'
 import { connecter, utilisateurCourant } from '../services/authMock'
 import { validerConnexion } from '../utils/validation'
+import '../style/register.css'
 function Login() {
-  const navigate = useNavigate()
- const location = useLocation()
-  const [formulaire, setFormulaire] = useState({
+ const navigate = useNavigate()
+  const location = useLocation()
+  const { valeurs, modifier: modifierValeur } = useFormulaire({
     email: '',
     motDePasse: '',
     memoriser: false,
   })
   const [erreur, setErreur] = useState('')
   const modifier = (e) => {
-    const { name, type, value, checked } = e.target
-    setFormulaire({ ...formulaire, [name]: type === 'checkbox' ? checked : value })
+    modifierValeur(e)
     setErreur('')
   }
   const soumettre = (e) => {
     e.preventDefault()
-    const messageValidation = validerConnexion(formulaire)
+    const messageValidation = validerConnexion(valeurs)
     if (messageValidation) {
       setErreur(messageValidation)
       return
     }
-    const resultat = connecter(formulaire)
+    const resultat = connecter(valeurs)
     if (!resultat.ok) {
       setErreur(resultat.erreur)
       return
     }
     navigate('/dashboard')
   }
-  // Déjà connecté ? On n'affiche pas la page de connexion (comme sur la maquette)
+  // Déjà connecté ? On n'affiche pas la page de connexion
   if (utilisateurCourant()) {
     return <Navigate to="/dashboard" replace />
   }
@@ -42,7 +43,7 @@ function Login() {
     <section className="auth">
       <div className="auth-gauche">
         <h2>
-          Rejoignez votre équip sur <span className="accent"> AgileTask.</span>
+          Rejoignez votre équipe sur <span className="accent"> AgileTask.</span>
         </h2>
         <p>
           Consultez vos tickets, mettez à jour leur statut et échangez avec vos
@@ -72,23 +73,23 @@ function Login() {
                 type="email"
                 placeholder="vous@exemple.com"
                 autoComplete="email"
-                valeur={formulaire.email}
+                valeur={valeurs.email}
                 onChange={modifier}
               />
               <ChampFormulaire
                 label="Mot de passe"
-  name="motDePasse"
+ name="motDePasse"
                 type="password"
                 placeholder="Votre mot de passe"
                 autoComplete="current-password"
-                valeur={formulaire.motDePasse}
+                valeur={valeurs.motDePasse}
                 onChange={modifier}
               />
               <label className="case">
                 <input
                   type="checkbox"
                   name="memoriser"
-                  checked={formulaire.memoriser}
+                  checked={valeurs.memoriser}
                   onChange={modifier}
                 />
                 Se souvenir de moi
